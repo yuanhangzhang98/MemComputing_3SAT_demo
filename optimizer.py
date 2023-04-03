@@ -35,7 +35,7 @@ class Optimizer():
         solved_step = self.max_step * torch.ones(self.batch)
         
         for step in range(self.max_step):
-            self.optimizer.zero_grad()
+            self.optimizer.zero_grad(set_to_none=False)
             is_solved_i = self.dmm.backward(self.param)
             self.optimizer.step()
             self.dmm.add_noise(np.sqrt(0.12))
